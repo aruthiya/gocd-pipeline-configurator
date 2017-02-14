@@ -65,7 +65,7 @@ def createPipeline(pipeline):
     json_data = json.dumps(pipeline)
     headers = {'Accept': 'application/vnd.go.cd.v1+json', 'Content-Type': 'application/json'}
     response = requests.post(create_url, data=json_data)
-    print "CODE"+  + response.status_code
+    print "CODE"+ response.status_code
     if not response.status_code == 200:
        print "Error: Could not create pipeline " + pipeline['pipeline']['name'] + ": "+ response.text
        
