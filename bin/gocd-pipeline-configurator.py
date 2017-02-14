@@ -15,9 +15,11 @@ def parseConfigFile(path):
     config.read(path)
     print "After read"
     for section in config.sections():
+        print "section " + section
         if section == CONFIG_SECTION:
             for option in config.options(section):
                 options[option] = config.get(section, option)
+                print "option " + option                
     print "After parseconfig"
 
 
