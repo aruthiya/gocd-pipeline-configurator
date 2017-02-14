@@ -10,7 +10,7 @@ pipelines:
         materials:
           - type: git
             attributes:
-              url: https://github.com/dennisgranath/HelloWorld.git
+              url: https://github.com/aruthiya/getting-started-repo.git
               branch: master
               auto_update: false
         parameters:
@@ -25,7 +25,7 @@ pipelines:
         materials:
           - type: git
             attributes:
-              url: https://github.com/dennisgranath/HelloWorld.git
+              url: https://github.com/aruthiya/getting-started-repo.git
               branch: master
               auto_update: false
         parameters:
