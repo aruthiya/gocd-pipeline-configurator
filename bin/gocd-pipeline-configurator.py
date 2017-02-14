@@ -13,6 +13,7 @@ def parseConfigFile(path):
     print "Inside parseconfigfile"
     config = ConfigParser.ConfigParser()
     config.read(path)
+    print "After read"
     for section in config.sections():
         if section == CONFIG_SECTION:
             for option in config.options(section):
