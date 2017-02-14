@@ -10,6 +10,7 @@ templates = {}
 
 
 def parseConfigFile(path):
+    print "Inside parseconfigfile"
     config = ConfigParser.ConfigParser()
     config.read(path)
     for section in config.sections():
