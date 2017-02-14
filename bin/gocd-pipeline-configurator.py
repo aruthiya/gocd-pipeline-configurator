@@ -19,7 +19,7 @@ def parseConfigFile(path):
         if section == CONFIG_SECTION:
             for option in config.options(section):
                 options[option] = config.get(section, option)
-                print "option " + option                
+                print "options[option] " + options[option]                
     print "After parseconfig"
 
 
