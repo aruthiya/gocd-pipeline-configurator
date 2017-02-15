@@ -24,7 +24,7 @@ def parseConfigFile(path):
 
 
 def getEtag(pipeline_name):
-    get_url = options[BASE_URL_OPTION_NAME] + "/go/admin/pipelines/" + pipeline_name
+    get_url = options[BASE_URL_OPTION_NAME] + "/go/api/admin/pipelines/" + pipeline_name
     headers = {'Accept': 'application/vnd.go.cd.v1+json'}
     response = requests.get(get_url, auth=(options['api_username'], options['api_password']), headers=headers)
     if response.status_code == 200:
@@ -40,7 +40,7 @@ def createOrEditPipeline(pipeline):
         editPipeline(pipeline, etag)
 
 def editPipeline(pipeline, etag):
-    edit_url = options[BASE_URL_OPTION_NAME] + "/go/admin/pipelines/" + pipeline['pipeline']['name']
+    edit_url = options[BASE_URL_OPTION_NAME] + "/go/api/admin/pipelines/" + pipeline['pipeline']['name']
     if 'pipeline_template' in pipeline:
         if not pipeline['pipeline_template'] in templates:
             print "Error: No such template '" + pipeline['pipeline_template']+ "'. Skipping " + pipeline['pipeline']['name']
@@ -54,7 +54,7 @@ def editPipeline(pipeline, etag):
        print "Error: Could not edit pipeline " + pipeline['pipeline']['name'] + ": " + response.text
 
 def createPipeline(pipeline):
-    create_url = options[BASE_URL_OPTION_NAME] + "/go/admin/pipelines"
+    create_url = options[BASE_URL_OPTION_NAME] + "/go/api/admin/pipelines"
     if 'pipeline_template' in pipeline:
         if not pipeline['pipeline_template'] in templates:
             print "Error: No such template '" + pipeline['pipeline_template']+ "'. Skipping " + pipeline['pipeline']['name']
@@ -63,7 +63,7 @@ def createPipeline(pipeline):
         pipeline = merge(pipeline, template)
 
     json_data = json.dumps(pipeline)
-    headers = {'Accept': 'application/vnd.go.cd.v2+json', 'Content-Type': 'application/json'}
+    headers = {'Accept': 'application/vnd.go.cd.v3+json', 'Content-Type': 'application/json'}
     response = requests.post(create_url, data=json_data, headers=headers)
     print "CODE" + str(response.status_code)
     if not response.status_code == 200:
