@@ -1,11 +1,11 @@
 ---
 # A list of pipelines where each item is a YAML representation of https://api.go.cd/current/#the-pipeline-config-object
 pipelines:
-  - group: defaultGroup
+  - group: DG
     pipeline:
         label_template: ${COUNT}
         enable_pipeline_locking: false
-        name: hello-world-build-1
+        name: hello1
         template: build
         materials:
           - type: git
@@ -16,11 +16,11 @@ pipelines:
         parameters:
           - name: BRANCH
             value: master
-  - group: hello-world
+  - group: hello
     pipeline:
         label_template: ${COUNT}
         enable_pipeline_locking: false
-        name: hello-world-build-2
+        name: hello2
         template: build
         materials:
           - type: git
