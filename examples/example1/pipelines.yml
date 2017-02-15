@@ -1,33 +1,43 @@
 ---
 # A list of pipelines where each item is a YAML representation of https://api.go.cd/current/#the-pipeline-config-object
 pipelines:
-  - group: DG
+  - group: Group_1
     pipeline:
         label_template: ${COUNT}
         enable_pipeline_locking: false
         name: hello1
-        template: build
+        template: null
         materials:
           - type: git
             attributes:
               url: https://github.com/aruthiya/getting-started-repo.git
+              destination: dest
+              filter: null
+              invert_filter: false
+              name: null
+              auto_update: true
               branch: master
-              auto_update: false
-        parameters:
-          - name: BRANCH
-            value: master
-  - group: hello
-    pipeline:
-        label_template: ${COUNT}
-        enable_pipeline_locking: false
-        name: hello2
-        template: build
-        materials:
-          - type: git
-            attributes:
-              url: https://github.com/aruthiya/getting-started-repo.git
-              branch: master
-              auto_update: false
-        parameters:
-          - name: BRANCH
-            value: master
+              submodule_folder: null
+              shallow_clone: true
+        stages:
+          - name: defaultStage
+            fetch_materials: true
+            clean_working_directory: false
+            never_cleanup_artifacts: false
+            environment_variables: 
+              -
+            jobs:
+              - name: defaultJob
+                run_instance_count: null
+                timeout: 0
+                environment_variables:
+                  -
+                resources:
+                  -
+                tasks:
+                  - type: exec
+                    attributes:
+                      run_if:
+                        - passed
+                      command: ls
+                      working_directory: null
